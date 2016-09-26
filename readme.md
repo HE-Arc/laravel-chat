@@ -6,3 +6,10 @@ Laravel chat playing with Laravel Echo and redis.
 
     $ docker-compose build
     $ docket-compose up -d
+
+## Develop
+
+    $ docker-compose exec php sh
+    # su laravel
+    $ composer update
+    $ php artisan migrate
