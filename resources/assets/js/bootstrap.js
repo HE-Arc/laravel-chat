@@ -41,6 +41,6 @@ import Echo from "laravel-echo"
 
 window.Echo = new Echo({
     broadcaster: 'socket.io',
-    host: 'http://' + document.location.host
+    host: document.location.protocol + '//' + document.location.host
 })
 
