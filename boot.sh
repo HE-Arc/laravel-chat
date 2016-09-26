@@ -30,7 +30,6 @@ elif [ "${my_gid}" != "${gid}" ]; then
 fi
 
 setfacl -R -m u:www-data:rwx -m g:www-data:rwx ${folder}/storage ${folder}/bootstrap/cache
-setfacl -dR -m u:www-data:rwx -m g:www-data:rwx ${folder}/storage ${folder}/bootstrap/cache
 
 # run php-fpm
 exec php-fpm
