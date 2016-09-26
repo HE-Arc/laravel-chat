@@ -19,6 +19,7 @@ RUN set -xe \
         postgresql-dev \
         # Required by node-sass
         python \
+        supervisor \
         tini \
     # Native modules
     && docker-php-ext-install \
@@ -53,7 +54,8 @@ RUN set -xe \
         curl -sS https://getcomposer.org/installer | \
             php -- --install-dir=/usr/local/bin --filename=composer
 
-# PHP configuration
+# Supervisord stuff
+COPY supervisord.conf /etc/supervisord.conf
 
 # User stuff.
 RUN set -x \
@@ -66,5 +68,5 @@ USER laravel
 RUN ln -s /var/www/html /home/laravel/html
 
 USER root
-ENTRYPOINT [ "tini", "--" ]
+ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "/usr/local/bin/boot.sh" ]
