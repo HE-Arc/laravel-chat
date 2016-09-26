@@ -23,6 +23,7 @@ services:
       - BROADCAST_DRIVER=redis
       - SESSION_DRIVER=redis
       - REDIS_HOST=redis
+      - QUEUE_DRIVER=redis
     depends_on:
       - mysql
       - redis
