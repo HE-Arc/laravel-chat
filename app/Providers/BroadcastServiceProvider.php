@@ -22,5 +22,10 @@ class BroadcastServiceProvider extends ServiceProvider
         Broadcast::channel('App.User.*', function ($user, $userId) {
             return (int) $user->id === (int) $userId;
         });
+
+        // Allow anyone logged in to chat into chatroom.
+        Broadcast::channel('chatroom', function ($user, ...$parameters) {
+            return (int) $user->id;
+        });
     }
 }

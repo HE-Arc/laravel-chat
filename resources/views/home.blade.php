@@ -14,4 +14,5 @@
         </div>
     </div>
 </div>
+<chat v-bind:messages="messages"></chat>
 @endsection

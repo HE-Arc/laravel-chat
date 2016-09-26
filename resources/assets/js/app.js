@@ -1,3 +1,4 @@
+"use strict"
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -12,9 +13,38 @@ require('./bootstrap');
  * the body of the page. From here, you may begin adding components to
  * the application, or feel free to tweak this setup for your needs.
  */
-
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('chat', require('./components/Chat.vue'));
 
 const app = new Vue({
-    el: 'body'
-});
+    el: 'main',
+    data: {
+        messages: []
+    }
+})
+const MAX = 12
+
+window.Echo
+    .join('chatroom')
+    .here((e) => {
+        app.messages.push({message: "You've joined the chatroom."})
+    })
+    .joining((e) => {
+        Vue.http.get('/username/' + e).then((response) => {
+            app.messages.push({message: response.json().name + " has joined"})
+        }, (response) => {
+            console.error(response)
+        })
+    })
+    .leaving((e) => {
+        Vue.http.get('/username/' + e).then((response) => {
+            app.messages.push({message: response.json().name + " has left"})
+        }, (response) => {
+            console.error(response)
+        })
+    })
+    .listen('Message', (e) => {
+        app.messages.push(e)
+        if (app.messages.length > MAX) {
+            app.messages.splice(0, app.messages.length - MAX)
+        }
+    })

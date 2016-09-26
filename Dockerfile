@@ -1,6 +1,8 @@
 FROM php:7.0-fpm-alpine
 MAINTAINER Yoan Blanc <yoan@dosimple.ch>
 
+EXPOSE 80 6001
+
 RUN set -xe \
     && apk add --no-cache \
         acl \
@@ -24,6 +26,7 @@ RUN set -xe \
     # Native modules
     && docker-php-ext-install \
         intl \
+        pcntl \
         pdo_mysql \
         pdo_pgsql \
     # PECL modules
