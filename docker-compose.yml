@@ -20,6 +20,9 @@ services:
       - DB_DATABASE=forge
       - DB_USERNAME=forge
       - DB_PASSWORD=forge
+      - BROADCAST_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - REDIS_HOST=redis
     depends_on:
       - mysql
       - redis
