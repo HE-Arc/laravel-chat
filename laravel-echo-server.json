@@ -11,8 +11,8 @@
 			"databasePath": "/database/laravel-echo-server.sqlite"
 		}
 	},
-	"devMode": false,
-	"host": "localhost",
+	"devMode": true,
+	"host": "0.0.0.0",
 	"port": "6001",
 	"referrers": [],
 	"sslCertPath": "",
