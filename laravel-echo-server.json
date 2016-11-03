@@ -1,7 +1,7 @@
 {
 	"appKey": "6ehrh4padfejj0jmgr6c9rg9g3tk03baiggqmjghu1rmfcqsf8f8dqj2c7q2",
 	"authEndpoint": "/broadcasting/auth",
-	"authHost": null,
+	"authHost": "http://nginx",
 	"database": "redis",
 	"databaseConfig": {
 		"redis": {

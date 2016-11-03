@@ -19,7 +19,6 @@ RUN set -xe \
         mysql-dev \
         nodejs \
         postgresql-dev \
-        # Required by node-sass
         python \
         supervisor \
         tini \
@@ -58,12 +57,12 @@ RUN set -xe \
             php -- --install-dir=/usr/local/bin --filename=composer
 
 # Supervisord stuff
-COPY supervisord.conf /etc/supervisord.conf
+COPY docker/supervisord.conf /etc/supervisord.conf
 
 # User stuff.
 RUN set -x \
     && adduser -h /home/laravel -s /bin/sh -D laravel
-COPY boot.sh /usr/local/bin/boot.sh
+COPY docker/boot.sh /usr/local/bin/boot.sh
 RUN set -xe \
     && chmod +x /usr/local/bin/boot.sh
 
