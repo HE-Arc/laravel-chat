@@ -23,3 +23,7 @@ Laravel chat playing with Laravel Echo and redis.
     BROADCAST_DRIVER=redis
     SESSION_DRIVER=redis
     QUEUE_DRIVER=redis
+
+## Deploy
+
+    vendor/bin/envoy run deploy
