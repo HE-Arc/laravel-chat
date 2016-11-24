@@ -168,6 +168,7 @@ return [
          */
 
         L5Swagger\L5SwaggerServiceProvider::class,
+        ProAI\Handlebars\HandlebarsServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -7,6 +7,7 @@
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
+    "handlebars": "^4.0.6",
     "jquery": "^3.1.0",
     "laravel-echo": "^1.0.5",
     "laravel-elixir": "^6.0.0-9",

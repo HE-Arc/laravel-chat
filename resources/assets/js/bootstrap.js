@@ -44,3 +44,7 @@ window.Echo = new Echo({
     host: document.location.protocol + '//' + document.location.host
 })
 
+/**
+ * Handlebars
+ */
+window.Handlebars = require('handlebars');
