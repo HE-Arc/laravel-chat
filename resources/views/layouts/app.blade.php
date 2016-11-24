@@ -82,7 +82,7 @@
     </main>
 
     <!-- Scripts -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('socket.io/socket.io.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

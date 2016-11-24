@@ -8,6 +8,13 @@
 
 require('./bootstrap');
 
+// Handlebar template test.
+$(function(){
+    var template = require("../../views/test.hbs")
+    var result = template({name: "From JavaScript!"})
+    $(result).insertAfter($('.mustache')[0]);
+})
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the body of the page. From here, you may begin adding components to
