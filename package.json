@@ -2,10 +2,13 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "start": "laravel-echo-server start"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "babel-loader": "^6.2.9",
+    "babel-preset-babili": "0.0.9",
+    "bootstrap": "^4.0.0-alpha.5",
     "gulp": "^3.9.1",
     "handlebars": "^4.0.6",
     "handlebars-loader": "^1.4.0",
@@ -17,8 +20,9 @@
     "lodash": "^4.14.0",
     "node-sass": "^3.13.0",
     "pusher-js": "^3.2.1",
-    "vue": "^1.0.26",
-    "vue-resource": "^0.9.3"
+    "tether": "^1.4.0",
+    "vue": "^1.0.28",
+    "vue-resource": "^1.0.3"
   },
   "dependencies": {
     "laravel-echo-server": "^1.0.11"

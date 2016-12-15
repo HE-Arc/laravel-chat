@@ -8,7 +8,8 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
+window.Tether = require('tether');
+require('bootstrap');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -26,7 +27,7 @@ require('vue-resource');
  */
 
 Vue.http.interceptors.push((request, next) => {
-    request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
 
     next();
 });
@@ -37,8 +38,11 @@ Vue.http.interceptors.push((request, next) => {
  * allows your team to easily build robust real-time web applications.
  */
 
-
 import Echo from "laravel-echo"
+
+/**
+ * Make sure that Laravel-Echo-Server is running for it to work.
+ */
 
 window.Echo = new Echo({
     broadcaster: 'socket.io',

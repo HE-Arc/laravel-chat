@@ -1,24 +1,25 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Chatroom</div>
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-block">
+                        <h3 class="panel-heading">Chatroom</h3>
 
-                    <div class="message">
-                        <li v-for="item in messages">
-                            <div class="main">
-                                <div class="text" v-if="item.from">
-                                    <strong>{{ item.from }}:</strong> {{ item.message }}
+                        <ul class="message card-text">
+                            <li v-for="item in messages">
+                                <div class="main">
+                                    <div class="text" v-if="item.from">
+                                        <strong>{{ item.from }}:</strong> {{ item.message }}
+                                    </div>
+                                    <div class="info" v-else>
+                                        {{ item.message }}
+                                    </div>
                                 </div>
-                                <div class="info" v-else>
-                                    {{ item.message }}
-                                </div>
-                            </div>
-                        </li>
-                    </div>
+                            </li>
+                        </ul>
 
-                    <textarea placeholder="Enter to send" v-model="content" @keyup="keyup" rows=1 cols=40></textarea>
+                    <textarea placeholder="Enter to send" v-model="content" @keyup="keyup" rows=1 cols=40 :disabled="disabled"></textarea>
                 </div>
             </div>
         </div>
@@ -27,28 +28,34 @@
 
 <script>
     export default {
-        ready() {
+        mounted() {
             console.log("Chat is ready!");
         },
         data() {
             return {
                 messages: this.$parent.messages,
-                content: ''
+                content: '',
             }
         },
         methods: {
             keyup(e) {
                 if (!e.shiftKey && e.keyCode === 13 && this.content.trim().length) {
+                    e.preventDefault()
+                    e.stopPropagation()
                     this.disabled = "disabled"
+
                     this.$http
                         .post('/message', {'message': this.content.trim()})
                         .then((response) => {
-                            if (response.json().status === "ok") {
-                                this.content = ''
-                            }
-                            this.disabled = '';
+                            response.json().then(function(data) {
+                                if (data.status != "ok") {
+                                    console.error(data)
+                                }
+                            }.bind(this))
+                            this.content = ''
+                            this.disabled = ''
                         }, (response) => {
-                            this.disabled = '';
+                            this.disabled = ''
                             console.error(response)
                         })
                 }
