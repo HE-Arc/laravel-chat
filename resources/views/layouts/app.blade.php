@@ -46,9 +46,9 @@
                     <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
                         <form class="form-inline" id="logout-form" action="{{ url('/logout') }}" method="POST">
                             {{ csrf_field() }}
-                            <a class="dropdown-item" href="{{ url('/logout') }}">
+                            <button type="submit" class="dropdown-item">
                                 Logout
-                            </a>
+                            </button>
                         </form>
                     </div>
                 </li>
