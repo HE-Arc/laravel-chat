@@ -12,7 +12,7 @@ services:
       - "8080:80"
 
   php:
-    image: greut/laravel:latest
+    image: greut/laravel:chat
     build: .
     environment:
       - DB_CONNECTION=mysql
