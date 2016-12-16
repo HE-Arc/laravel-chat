@@ -12,7 +12,7 @@ require('./bootstrap');
 $(function(){
     var template = require("../../views/test.hbs")
     var result = template({name: "From JavaScript!"})
-    $(result).insertAfter($('.mustache')[0]);
+    $('.mustache:first-child').after(result);
 })
 
 /**
